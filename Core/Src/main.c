@@ -92,15 +92,6 @@ int main(void)
   HAL_UART_Receive_IT(&huart1, uart_buffer, 3);
   __HAL_FLASH_PREFETCH_BUFFER_DISABLE();
   __HAL_FLASH_SLEEP_POWERDOWN_ENABLE();
-  /* Reset all RCC Sleep and Stop modes register to */
-    /* improve power consumption                      */
-    RCC->AHB1SMENR  = 0x0;
-    RCC->AHB2SMENR  = 0x0;
-    RCC->AHB3SMENR  = 0x0;
-
-    RCC->APB1SMENR1 = 0x0;
-    RCC->APB1SMENR2 = 0x0;
-    RCC->APB2SMENR  = 0x0;
     HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, 1);
     HAL_Delay(5000);
     HAL_GPIO_WritePin(LED_GPIO_Port, LED_Pin, 0);
